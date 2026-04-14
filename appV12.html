@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yenkumu-Lutu | Triptyque Interactif</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de la police d'écriture Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; background-color: #1c1917; }
+        
+        /* Conteneur imitant la proportion d'un tiers de page A4 (panneau de triptyque) */
+        .panel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+            background-color: white;
+            height: 88vh;
+            width: calc(88vh * (99 / 210));
+        }
+        
+        @media (max-width: 640px) {
+            .panel-wrapper { width: 90vw; height: calc(90vw * (210 / 99)); max-height: 80vh; }
+        }
+        
+        /* Style des points de navigation */
+        .dot.active { background-color: #84cc16; transform: scale(1.3); }
+    </style>
+</head>
+<body class="antialiased selection:bg-lime-200">
+
+    <!-- Conteneur principal du Carousel -->
+    <div id="slider" class="flex h-screen w-[600vw] transition-transform duration-500 ease-in-out will-change-transform">
+        
+        <!-- PANNEAU 1 : COUVERTURE -->
+        <div class="w-screen h-screen flex items-center justify-center p-4">
+            <div class="panel-wrapper flex flex-col items-center p-8 sm:p-12 bg-white relative">
+                
+                <!-- EFFET FUMÉE VERTE (Aquarelle fond) -->
+                <!-- Base du dégradé -->
+                <div class="absolute bottom-0 left-0 w-full h-3/4 bg-gradient-to-t from-lime-50/90 via-lime-50/30 to-transparent"></div>
+                <!-- Nuage vert citron à gauche -->
+                <div class="absolute -bottom-24 -left-16 w-80 h-80 bg-lime-300/40 rounded-full blur-3xl"></div>
+                <!-- Nuage vert émeraude à droite -->
+                <div class="absolute -bottom-20 -right-16 w-96 h-96 bg-green-300/30 rounded-full blur-3xl"></div>
+                <!-- Diffusion verte au centre -->
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-48 bg-lime-400/20 rounded-[100%] blur-3xl"></div>
+                <!-- Nuage bleuté très subtil pour la transition -->
+                <div class="absolute bottom-20 left-20 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl"></div>
+                
+                <!-- Groupe central (Logo + Titre) -->
+                <div class="flex-grow flex flex-col items-center justify-center w-full z-10 mt-4">
+                    
+                    <!-- LOGO -->
+                    <div class="flex flex-col items-center mb-12 w-full">
+                        <img src="image_1dd119.png" alt="Logo Yenkumu Lutu" class="h-20 sm:h-24 w-auto max-w-full object-contain drop-shadow-sm" 
+                             onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
+                        
+                        <!-- Reproduction SVG fidèle (affichée uniquement si l'image manque) -->
+                        <div id="fallback-logo" style="display: none;" class="w-full max-w-[300px]">
+                            <svg width="100%" viewBox="0 0 340 100" class="mx-auto">
+                                <path d="M 35 75 Q 15 55 20 35 Q 35 40 40 60 Z" fill="#84cc16"/>
+                                <path d="M 45 65 Q 35 30 50 15 Q 65 35 50 65 Z" fill="#84cc16"/>
+                                <path d="M 50 75 Q 65 45 95 35 Q 195 10 325 10 Q 195 15 105 40 Q 75 50 55 75 Z" fill="#84cc16"/>
+                                <text x="70" y="75" font-family="'Inter', sans-serif" font-weight="800" font-size="28" fill="#1e3a8a" letter-spacing="1">YENKUMU LUTU</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- TITRE EXACT -->
+                    <div class="flex flex-col items-center mb-6 w-full">
+                        <h1 class="text-center flex flex-col items-center mb-5 w-full">
+                            <span class="text-xl sm:text-2xl font-semibold text-[#364150] tracking-wide mb-1">Votre tremplin vers</span>
+                            <!-- L'ajout de whitespace-nowrap force "l'emploi durable" à rester sur une seule ligne -->
+                            <span class="text-[1.8rem] sm:text-[2.5rem] font-bold text-[#005eb8] tracking-tight leading-none whitespace-nowrap">l'emploi durable</span>
+                        </h1>
+                        <!-- Séparateur 3 couleurs -->
+                        <div class="w-24 sm:w-[7.5rem] h-[5px] bg-gradient-to-r from-[#a4ce3a] via-[#0bb3b6] to-[#005eb8] rounded-full"></div>
+                    </div>
+
+                </div>
+
+                <!-- BAS DE PAGE -->
+                <div class="flex flex-col items-center z-10 mb-6 mt-auto pt-8 w-full">
+                    <p class="text-[#1e3a8a] mb-5 text-sm sm:text-base tracking-[0.3em] font-medium uppercase opacity-70 text-center">À Papaïchton</p>
+                    <div class="bg-gradient-to-r from-[#84cc16] to-lime-500 text-white px-6 sm:px-8 py-3.5 rounded-full text-[10px] sm:text-[11px] font-bold tracking-[0.15em] shadow-md border border-lime-400/50 text-center whitespace-nowrap">
+                        ATELIER CHANTIER D'INSERTION
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANNEAU 2 : PRÉSENTATION -->
+        <div class="w-screen h-screen flex items-center justify-center p-4">
+            <div class="panel-wrapper p-10 bg-[#f8fafc] flex flex-col justify-center gap-10 relative">
+                <div>
+                    <h2 class="text-[#1e3a8a] font-extrabold text-3xl mb-2 leading-tight">Accompagner vers</h2>
+                    <h2 class="text-[#84cc16] font-extrabold text-3xl leading-tight">l'insertion à Papaïchton</h2>
+                </div>
+                
+                <div class="space-y-8">
+                    <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                        Yenkumu-Lutu est une structure d'insertion par l'activité économique (SIAE) implantée à Papaichton.
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                        Acteur de proximité, nous avons pour mission d'accompagner les habitants éloignés de l'emploi vers une insertion professionnelle durable. À travers des activités utiles, l'ACI permet à chacun de reprendre confiance et de développer ses compétences.
+                    </p>
+                </div>
+
+                <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100 shadow-sm mt-4">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">💡</span>
+                        <h3 class="text-[#1e3a8a] font-bold text-xl">Notre philosophie</h3>
+                    </div>
+                    <p class="text-xs text-gray-700 leading-relaxed font-medium">
+                        Répondre aux besoins de la population tout en valorisant les ressources locales. Recréer du lien et construire un projet qui vous ressemble.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANNEAU 3 : PÔLES D'ACTIVITÉS -->
+        <div class="w-screen h-screen flex items-center justify-center p-4">
+            <div class="panel-wrapper p-10 bg-white flex flex-col justify-between">
+                <div class="mb-4">
+                    <h2 class="text-[#1e3a8a] font-extrabold text-3xl mb-3">Nos <span class="text-blue-500">Pôles</span> d'Activités</h2>
+                    <p class="text-xs text-gray-500 font-semibold leading-relaxed">Apprendre et progresser sur le terrain grâce à des missions concrètes.</p>
+                </div>
+                
+                <div class="space-y-4 flex-grow flex flex-col justify-center">
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <span class="text-3xl">🪵</span>
+                        <div>
+                            <h4 class="text-[#1e3a8a] font-bold text-sm">Filière Bois</h4>
+                            <p class="text-[11px] text-gray-500">Abattage, bûcheronnage, sciage, menuiserie.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <span class="text-3xl">🍃</span>
+                        <div>
+                            <h4 class="text-[#84cc16] font-bold text-sm">Espaces Verts</h4>
+                            <p class="text-[10px] text-gray-500">Entretien et aménagement paysager public.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <span class="text-3xl">🌱</span>
+                        <div>
+                            <h4 class="text-[#1e3a8a] font-bold text-sm">Pépinière & Compost</h4>
+                            <p class="text-[10px] text-gray-500">Agriculture locale et éco-responsabilité.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <span class="text-3xl">🏗️</span>
+                        <div>
+                            <h4 class="text-[#84cc16] font-bold text-sm">Bâtiment (BTP)</h4>
+                            <p class="text-[10px] text-gray-500">Chantiers de construction éco-responsables.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <span class="text-3xl">📁</span>
+                        <div>
+                            <h4 class="text-[#1e3a8a] font-bold text-sm">Administratif</h4>
+                            <p class="text-[10px] text-gray-500">Support et accueil du public.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANNEAU 4 : ACCOMPAGNEMENT -->
+        <div class="w-screen h-screen flex items-center justify-center p-4">
+            <div class="panel-wrapper p-10 bg-[#f8fafc] flex flex-col justify-between">
+                <div>
+                    <h2 class="text-[#1e3a8a] font-extrabold text-3xl mb-1">Un soutien humain</h2>
+                    <h2 class="text-blue-500 font-extrabold text-3xl mb-6">et personnalisé</h2>
+                    <p class="text-xs text-gray-700 font-medium leading-relaxed">
+                        Intégrer Yenkumu-Lutu, c'est signer un CDDI. Vous bénéficiez d'un double accompagnement pour garantir votre réussite :
+                    </p>
+                </div>
+
+                <div class="space-y-6 flex-grow flex flex-col justify-center">
+                    <div class="bg-white p-5 rounded-2xl border-l-8 border-[#84cc16] shadow-sm">
+                        <h3 class="font-extrabold text-[#1e3a8a] text-lg mb-1">1. Sur le terrain (Les ETI)</h3>
+                        <p class="text-[11px] text-gray-500 mb-3">Encadrants techniques supervisent votre travail et transmettent leur savoir-faire.</p>
+                        <p class="text-[10px] font-bold text-[#84cc16] tracking-tighter">➡️ COMPÉTENCES & SAVOIR-ÊTRE</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border-l-8 border-blue-500 shadow-sm">
+                        <h3 class="font-extrabold text-[#1e3a8a] text-lg mb-1">2. Projet de vie (Les ASP)</h3>
+                        <p class="text-[11px] text-gray-500 mb-3">Accompagnateurs socio-professionnels vous aident à lever les freins sociaux (mobilité, logement...).</p>
+                        <p class="text-[10px] font-bold text-blue-500 tracking-tighter">➡️ FORMATIONS ET EMPLOI DURABLE</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1e3a8a] p-6 rounded-2xl text-center shadow-lg mt-4">
+                    <p class="text-white font-bold text-sm mb-3">VOUS VOULEZ EN SAVOIR PLUS ?</p>
+                    <button class="bg-[#84cc16] hover:bg-lime-600 transition-colors text-white px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest shadow-md">Contactez-nous</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANNEAU 5 : CONTACTS -->
+        <div class="w-screen h-screen flex items-center justify-center p-4">
+            <div class="panel-wrapper p-10 bg-[#f8fafc] flex flex-col justify-between">
+                <div>
+                    <h2 class="text-[#1e3a8a] font-extrabold text-3xl mb-8 leading-tight">POURQUOI NOUS<br>REJOINDRE ?</h2>
+                    <div class="bg-white rounded-2xl border border-gray-100 p-6 space-y-6 shadow-sm">
+                        <div class="flex items-center gap-4"><span class="text-3xl">🚀</span><p class="text-sm font-bold text-[#1e3a8a]">Reprendre une activité professionnelle</p></div>
+                        <div class="flex items-center gap-4"><span class="text-3xl">📈</span><p class="text-sm font-bold text-gray-600">Développer ses compétences</p></div>
+                        <div class="flex items-center gap-4"><span class="text-3xl">🌱</span><p class="text-sm font-bold text-gray-600">Construire son avenir</p></div>
+                        <div class="flex items-center gap-4"><span class="text-3xl">🤝</span><p class="text-sm font-bold text-gray-600">Cadre humain et solidaire</p></div>
+                    </div>
+                </div>
+
+                <div class="space-y-6 border-t border-gray-200 pt-8 mt-4">
+                    <h3 class="text-blue-500 font-extrabold text-2xl mb-2">Nous contacter</h3>
+                    <div class="flex items-start gap-4"><span class="text-lime-600 text-2xl">📍</span><p class="text-sm font-bold text-gray-800">Papaïchton, Guyane 97316</p></div>
+                    <div class="flex items-center gap-4"><span class="text-red-500 text-2xl">📞</span><p class="text-base font-extrabold text-gray-800">06 94 03 59 26</p></div>
+                    <div class="flex items-center gap-4"><span class="text-blue-400 text-2xl">✉️</span><p class="text-xs font-bold text-[#1e3a8a] break-all">secretariat.yenkumu.lutu@gmail.com</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANNEAU 6 : ENGAGEMENT -->
+        <div class="w-screen h-screen flex items-center justify-center p-4">
+            <div class="panel-wrapper p-10 bg-[#1e3a8a] flex flex-col justify-between relative overflow-hidden">
+                <!-- Décor -->
+                <div class="absolute top-0 right-0 w-48 h-48 bg-lime-400/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl"></div>
+                
+                <div class="z-10">
+                    <h2 class="text-white font-extrabold text-3xl mb-3 mt-4">Notre Engagement</h2>
+                    <div class="w-20 h-1.5 bg-lime-400 rounded-full mb-8"></div>
+                    
+                    <p class="text-blue-100 text-sm mb-10 leading-relaxed font-medium">
+                        Yenkumu-Lutu s'inscrit dans une forte dynamique de développement local en Guyane.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <span class="text-lime-400 text-2xl">📍</span>
+                            <div>
+                                <h4 class="text-white font-bold text-base mb-1">Besoins locaux</h4>
+                                <p class="text-blue-200 text-xs leading-relaxed">Répondre aux besoins concrets des habitants de Papaïchton.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-lime-400 text-2xl">✔️</span>
+                            <div>
+                                <h4 class="text-white font-bold text-base mb-1">Ressources</h4>
+                                <p class="text-blue-200 text-xs leading-relaxed">Valoriser les richesses naturelles et humaines du haut Maroni.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-lime-400 text-2xl">⚡</span>
+                            <div>
+                                <h4 class="text-white font-bold text-base mb-1">Dynamisme</h4>
+                                <p class="text-blue-200 text-xs leading-relaxed">Participer activement à l'Économie solidaire du bassin de vie.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#112244] p-8 rounded-2xl text-center z-10 border border-white/5 shadow-2xl mt-4">
+                    <span class="text-4xl block mb-4">🤝</span>
+                    <p class="text-white text-[11px] font-bold tracking-[0.2em] uppercase opacity-90 leading-tight">Économie Sociale<br>et Solidaire</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Overlay -->
+    <div class="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-4 px-6 py-3 bg-black/40 backdrop-blur-md rounded-full border border-white/10 z-50">
+        <button onclick="go(0)" class="dot w-3 h-3 rounded-full bg-white/40 active transition-all"></button>
+        <button onclick="go(1)" class="dot w-3 h-3 rounded-full bg-white/40 transition-all"></button>
+        <button onclick="go(2)" class="dot w-3 h-3 rounded-full bg-white/40 transition-all"></button>
+        <button onclick="go(3)" class="dot w-3 h-3 rounded-full bg-white/40 transition-all"></button>
+        <button onclick="go(4)" class="dot w-3 h-3 rounded-full bg-white/40 transition-all"></button>
+        <button onclick="go(5)" class="dot w-3 h-3 rounded-full bg-white/40 transition-all"></button>
+    </div>
+
+    <script>
+        let curr = 0;
+        const slider = document.getElementById('slider');
+        const dots = document.querySelectorAll('.dot');
+        
+        function go(idx) {
+            curr = Math.max(0, Math.min(idx, 5));
+            slider.style.transform = `translateX(-${curr * 100 / 6}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === curr));
+            dots.forEach((d, i) => d.classList.toggle('bg-white/40', i !== curr));
+        }
+        
+        // Navigation Tactile (Swipe)
+        let startX = 0;
+        document.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
+        document.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) diff > 0 ? go(curr + 1) : go(curr - 1);
+        }, {passive: true});
+        
+        // Navigation Clavier (Flèches gauche/droite)
+        document.addEventListener('keydown', e => {
+            if(e.key === 'ArrowRight') go(curr + 1);
+            if(e.key === 'ArrowLeft') go(curr - 1);
+        });
+    </script>
+</body>
+</html>
